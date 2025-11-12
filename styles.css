@@ -1,6 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Roboto+Slab:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+:root{
+    --white: 0, 100%, 100%;
+    --black: 0, 0%, 0%;
+    --blue-950: 233, 39%, 13%;
+    --blue-900: 234, 39%, 14%;
+    --blue-850: 235, 35%, 18%;
+    --blue-100: 227, 100%, 92%;
+    --blue-50: 229, 52%, 96%;
+    --grey-400: 233, 13%, 76%;
+    --grey-200: 0, 3%, 89%;
+    --cyan-300: 182, 91%, 71%;
+    --red-400:0, 91%, 71%;
+    --purple-400:284, 89%, 74%;
+
+    --fs-80:5rem;
+    --fs-14:0.875rem;
+    --fs-12:0.75rem;
+    --fs-13:0.8125rem;
+    --fs-28:1.75rem;
+
+
+    --spacing-8: 0.5rem;
+    --spacing-16: 1rem;
+    --spacing-24: 1.5rem;
+    --spacing-32: 2rem;
+    --spacing-40: 2.5rem;
+    --spacing-48: 3rem;
+    --spacing-56: 3.5rem;
+    --spacing-64: 4rem;
+    --spacing-80: 5rem;
+    --spacing-96: 6rem;
+
+
+
+
+
+
+}
+
+/* utility classes */
+/* FONTS and TYPOGRAPHY*/
+.font-sans {
+  font-family: "Kumbh Sans", sans-serif;
+  font-variation-settings:
+    "YOPQ" 300;
+}
+
+.roboto-serif {
+  font-family: "Roboto Slab", serif;
+}
+
+.font-mono {
+  font-family: "Space Mono", monospace;
+}
+
+.tp1f1{
+    font-size: var(--fs-80);
+    line-height: 125%;
+    letter-spacing: -5px;
+    font-weight: bold;
+}
+
+.tp2f1{
+    font-size: var(--fs-14);
+    line-height: 120%;
+    letter-spacing: 13px;
+    font-weight: bold;
+}
+
+.tp3f1{
+    font-size: var(--fs-12);
+    line-height: 125%;
+    font-weight: bold;
+}
+
+.tp1f2{
+    font-size: var(--fs-80);
+    line-height: 133%;
+    font-weight: bold;
+}
+
+.tp2f2{
+    font-size: var(--fs-14);
+    line-height: 130%;
+    letter-spacing: 13px;
+    font-weight: bold;
+}
+
+.tp3f2{
+    font-size: var(--fs-12);
+    line-height: 133%;
+    font-weight: bold;
+}
+
+.tp1f3{
+    font-size: var(--fs-80);
+    line-height: 120%;
+    letter-spacing: -10px;
+}
+
+.tp2f3{
+    font-size: var(--fs-14);
+    line-height: 150%;
+    letter-spacing: 13px;
+    font-weight: bold;
+}
+
+.tp3f3{
+    font-size: var(--fs-12);
+    line-height: 150%;
+    font-weight: bold;
+}
+
+/* settings MODAL fonts */
+.tp1s{
+    font-size: var(--fs-28);
+    line-height: 125%;
+    font-weight: bold;
+}
+
+.tp2sf1{
+    font-size: var(--fs-13);
+    line-height: 145%;
+    font-weight: bold;
+}
+
+.tp2sf2{
+    font-size: 1rem;
+    line-height: 125%;
+}
+
+.tp2sf3{
+    font-size: 1rem;
+    line-height: 125%;
+    font-weight: bold;
+}
+
+.tp3s{
+    font-size: var(--fs-13);
+    line-height: 125%;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.tp4s{
+    font-size: var(--fs-12);
+    line-height: 125%;
+    font-weight: bold;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+
+.display-none{
+    display: none;
+}
+
+
+/* TEXT colors */
+.text-blue-100{
+    color: hsl(var(--blue-100));
+}
+
+.text-blue-900{
+    color: hsl(var(--blue-900));
+}
+
+.text-blue-850-40{
+    color: hsla(var(--blue-850),0.4);
+}
+
+
+
+/* BLOCKS */
+html{
+    background-color: hsl(var(--blue-850));
+    color: white;
+
+}
+
+main{
+    border: 1px solid white;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    padding: var(--spacing-8);
+}
+
+.tabs{
+    background-color: hsl(var(--blue-900));
+    display: flex;
+    padding: var(--spacing-8);
+    border-radius: 2rem;
+    justify-content: space-between;
+}
+
+.tab{
+    padding: var(--spacing-16) var(--spacing-24);
+    border-radius: 2rem;
+}
+.tab.active{
+    background-color: hsl(var(--red-400));
+    color: hsl(var(--blue-850));
+}
+
+.timer-wrapper{
+    /* background: #2E325A; */
+    aspect-ratio: 1;
+    padding: var(--spacing-16);
+background-image: linear-gradient(to right bottom, #0e112a, #151935, #1d2141, #252a4d, #2e325a);
+border-radius: 50%;
+box-shadow: -50px -50px 100px 0px rgba(39,44,90,1),50px 50px 100px 0px rgba(18,21,48,1);
+}
+
+.timer-container{
+    background-color: hsl(var(--blue-900));
+    height: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    border: var(--spacing-16) solid hsl(var(--blue-900));
+    position: relative;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    
+}
+
+.progress-bar{
+    position: absolute;
+    height: 1rem;
+    width: 100%;
+    top:0;
+    left: 0;
+    background-color: hsl(var(--red-400));
+    border-radius: 1rem;
+}
+
+svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: rotate(-90deg);
+}
+
+#progress-bar{
+    stroke: hsl(var(--red-400));
+    stroke-width: var(--spacing-8);
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-dasharray: 99; /* Progress percentage */
+    transition: stroke-dasharray 0.5s ease-out;
+}
+
+/* MODAL - START */
+
+.settings-modal{
+    position: fixed;
+    background-color: white;
+    top:50%;
+    transform:translateY(-50%);
+    border-radius: var(--spacing-8);
+    margin: var(--spacing-8);
+    left: 0; /* for strange behavior */
+}
+
+hr{
+    background: hsl(var(--grey-200));
+    height: 1px;
+    border: 0;
+    width: 100%;
+}
+
+.settings-modal-head{
+    display: flex;
+    padding: var(--spacing-16);
+    justify-content: space-between;
+}
+
+.settings-modal-head img{
+    object-fit: contain;
+}
+
+.settings-grid{
+    display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(3, 1fr);
+grid-column-gap: var(--spacing-64);
+grid-row-gap: var(--spacing-8);
+
+}
+
+form{
+    padding: var(--spacing-16);
+}
+
+
+.time-input{
+    width: 100%;
+    border: 0;
+    background: none;
+    
+    text-align: left;
+    
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+
+
+.arrows-group{
+    width: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+}
+
+.arrows-group img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.input-container{
+    display: flex;
+    background: hsl(var(--blue-50));
+    border-radius: var(--spacing-8);
+    padding: var(--spacing-8) var(--spacing-16);
+}
+
+/* MODAL - END */

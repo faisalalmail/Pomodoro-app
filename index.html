@@ -5,28 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
+  <script src="main.js" defer></script>
   <title>Frontend Mentor | Pomodoro app</title>
 </head>
 <body>
-  pomodoro
-  short break
-  long break
+  <main>
+    <img src="assets/logo.svg" alt="logo">
+    <div class="tabs">
 
-  start 
-  pause
-  restart
+  <div class="text-blue-100 font-sans tp3f1 tab active">pomodoro</div>
+  <div class="text-blue-100 font-sans tp3f1 tab">short break</div>
+  <div class="text-blue-100 font-sans tp3f1 tab">long break</div>
+</div>
 
-  Settings
+<div class="timer-wrapper" id="timer-wrapper">
+  <div class="timer-container">
+<!--     
+    <div class="progress-bar">
 
-  Time (minutes)
-  pomodoro
-  short break
-  long break
+  </div> -->
+  <p class="time tp1f1 font-sans text-blue-100">25:00</p>
 
+  <p class="tp2f1 font-sans uppercase text-blue-100">start</p>
+    <p class="tp2f1 font-sans uppercase text-blue-100 display-none">pause</p>
+  <p class="tp2f1 font-sans uppercase text-blue-100 display-none">restart</p>
+  <svg>
+    <circle id="progress-bar" cx="50%" cy="50%" r="48%" pathLength="100"></circle>
+  </svg>
+  </div>
+</div>
+
+
+
+  <img src="assets/icon-settings.svg" alt="Settings" class="settings-btn" id="settings-btn">
+
+<!-- Settings modal -START -->
+
+  <div class="settings-modal" id="settings-modal">
+    <div class="settings-modal-head">
+    <p class="tp1s text-blue-900 font-sans">Settings</p>
+    <img alt="close-btn" src="assets/icon-close.svg">
+    </div>
+    <hr>
+    <form>
+  <p class="font-sans text-blue-900 tp3s uppercase">Time (minutes)</p>
+<div class="settings-grid">
+
+ <!--  pomodoro input field  START -->
+<label class="text-blue-850-40 font-sans tp4s">pomodoro</label>
+<div class="input-container">
+  <input type="number" min="0" class="time-input text-blue-900 tp3s font-sans" placeholder="15">
+  <div class="arrows-group">
+  <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
+  </div>
+</div>
+
+ <!--  pomodoro input field  END -->
+  
+  <label class="text-blue-850-40 font-sans tp4s">short break</label><div class="time-input text-blue-900 tp3s font-sans">5</div>
+  <label class="text-blue-850-40 font-sans tp4s">long break</label><!-- <div class="time-input text-blue-900 tp3s font-sans">15</div> -->
+  <input type="number" min="0" class="time-input text-blue-900 tp3s font-sans" placeholder="15">
+  <div class="arrows-group">
+  <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
+  </div>
+</div>
   Font
   Color
 
   Apply
+</form>
+</div>
+<!-- Settings modal -END -->
+
+
+
+  </main>
 </body>
 </html>
