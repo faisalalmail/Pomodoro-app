@@ -10,7 +10,9 @@
 </head>
 <body>
   <main>
+    <div class="logo-container">
     <img src="assets/logo.svg" alt="logo">
+    </div>
     <div class="tabs">
 
   <div class="text-blue-100 font-sans tp3f1 tab active">pomodoro</div>
@@ -24,7 +26,7 @@
     <div class="progress-bar">
 
   </div> -->
-  <p class="time tp1f1 font-sans text-blue-100">25:00</p>
+  <p class="time tp1f1 font-sans text-blue-100" id="timer">25:00</p>
 
   <p class="tp2f1 font-sans uppercase text-blue-100">start</p>
     <p class="tp2f1 font-sans uppercase text-blue-100 display-none">pause</p>
@@ -36,15 +38,20 @@
 </div>
 
 
-
+<div class="settings-button-container">
   <img src="assets/icon-settings.svg" alt="Settings" class="settings-btn" id="settings-btn">
+</div>
 
-<!-- Settings modal -START -->
+
+
+
+  </main>
+  <!-- Settings modal -START -->
 
   <div class="settings-modal" id="settings-modal">
     <div class="settings-modal-head">
     <p class="tp1s text-blue-900 font-sans">Settings</p>
-    <img alt="close-btn" src="assets/icon-close.svg">
+    <img alt="close-btn" src="assets/icon-close.svg" onclick="closeModal()">
     </div>
     <hr>
     <form>
@@ -52,33 +59,64 @@
 <div class="settings-grid">
 
  <!--  pomodoro input field  START -->
-<label class="text-blue-850-40 font-sans tp4s">pomodoro</label>
+   <div class="input-field-container">
+<label class="text-blue-850-40 font-sans tp4s" for="pomodoro">pomodoro</label>
 <div class="input-container">
-  <input type="number" min="0" class="time-input text-blue-900 tp3s font-sans" placeholder="15">
+  <input type="number" min="0" value="25" class="time-input text-blue-900 tp3s font-sans" id="pomodoro">
   <div class="arrows-group">
   <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
   </div>
 </div>
-
+   </div>
  <!--  pomodoro input field  END -->
-  
-  <label class="text-blue-850-40 font-sans tp4s">short break</label><div class="time-input text-blue-900 tp3s font-sans">5</div>
-  <label class="text-blue-850-40 font-sans tp4s">long break</label><!-- <div class="time-input text-blue-900 tp3s font-sans">15</div> -->
-  <input type="number" min="0" class="time-input text-blue-900 tp3s font-sans" placeholder="15">
+   <!--  Short break input field  START -->
+     <div class="input-field-container">
+  <label class="text-blue-850-40 font-sans tp4s" for="short-break">short break</label>
+<div class="input-container">
+  <input type="number" min="0" value="5" class="time-input text-blue-900 tp3s font-sans" id="short-break">
   <div class="arrows-group">
   <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
   </div>
 </div>
-  Font
-  Color
+     </div>
+     <!--  Short break input field  End -->
+    <!--  Long break input field  START -->
+      <div class="input-field-container">
+  <label class="text-blue-850-40 font-sans tp4s" for="long-break">long break</label>
+  <div class="input-container">
+  <input type="number" min="0" value="15" class="time-input text-blue-900 tp3s font-sans" id="long-break">
+  <div class="arrows-group">
+  <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
+  </div>
+</div>
+      </div>
+  <!--  Short break input field  End -->
+</div>
+<hr>
+<div class="font-picker-container">
+  <p class="text-blue-900 uppercase font-sans tp3s">Font</p>
+  <div class="font-picker">
+    <div class="font-pick active font-sans tp2sf1 text-blue-850-73">Aa</div>
+    <div class="font-pick font-serif tp2sf2 text-blue-850-73">Aa</div>
+    <div class="font-pick font-mono tp2sf3 text-blue-850-73">Aa</div>
 
-  Apply
+
+  </div>
+  </div>
+  <hr>
+  <div class="color-picker-container">
+  <p class="text-blue-900 uppercase font-sans tp3s">Color</p>
+  <div class="color-picker">
+    <div class="color-pick active" id="red-pick"></div>
+    <div class="color-pick" id="cyan-pick"></div>
+    <div class="color-pick" id="purple-pick"></div>
+
+
+  </div>
+    </div>
+  <button class="bg-red-400 submit-btn text-white tp2sf1 font-sans" type="submit">Apply</button>
 </form>
 </div>
 <!-- Settings modal -END -->
-
-
-
-  </main>
 </body>
 </html>
