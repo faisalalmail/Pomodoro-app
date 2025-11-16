@@ -296,7 +296,7 @@ svg{
 }
 
 .settings-modal{
-    display: none;
+    display: block;
     position: fixed;
     background-color: white;
     border-radius: var(--spacing-16);
@@ -361,6 +361,11 @@ form{
     
     text-align: left;
     
+}
+
+input[type="number"]:focus{
+  
+    outline: 0;
 }
 
 input[type="number"] {
@@ -430,6 +435,7 @@ input[type=number]::-webkit-outer-spin-button {
     position: relative;
 }
 
+
 .color-pick.active::after{
     position: absolute;
     /* border: 1px dotted darkcyan; */
@@ -440,7 +446,7 @@ input[type=number]::-webkit-outer-spin-button {
     left: 0;
     background-image: url(assets/check.svg);
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 70%;
     background-position: 50%;
 }
 
@@ -450,6 +456,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 #red-pick{
     background: hsl(var(--red-400));
+
 }
 
 #cyan-pick{
@@ -474,3 +481,62 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* MODAL - END */
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+      height: var(--spacing-40);
+    width: var(--spacing-40);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input,.color-pick input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+    background-image: url(assets/check.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 70%;
+}
+
+
+
+
+

@@ -54,7 +54,7 @@
     <img alt="close-btn" src="assets/icon-close.svg" onclick="closeModal()">
     </div>
     <hr>
-    <form>
+    <form id="settings-form">
   <p class="font-sans text-blue-900 tp3s uppercase">Time (minutes)</p>
 <div class="settings-grid">
 
@@ -64,7 +64,8 @@
 <div class="input-container">
   <input type="number" min="0" value="25" class="time-input text-blue-900 tp3s font-sans" id="pomodoro">
   <div class="arrows-group">
-  <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
+  <img src="assets/icon-arrow-up.svg" onclick="document.getElementById('pomodoro').stepUp()">
+  <img src="assets/icon-arrow-down.svg" onclick="document.getElementById('pomodoro').stepDown()">
   </div>
 </div>
    </div>
@@ -73,9 +74,10 @@
      <div class="input-field-container">
   <label class="text-blue-850-40 font-sans tp4s" for="short-break">short break</label>
 <div class="input-container">
-  <input type="number" min="0" value="5" class="time-input text-blue-900 tp3s font-sans" id="short-break">
+  <input type="number" min="0" value="5" class="time-input text-blue-900 tp3s font-sans" id="shortBreak">
   <div class="arrows-group">
-  <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
+  <img src="assets/icon-arrow-up.svg" onclick="document.getElementById('shortBreak').stepUp()">
+  <img src="assets/icon-arrow-down.svg" onclick="document.getElementById('shortBreak').stepDown()">
   </div>
 </div>
      </div>
@@ -84,9 +86,10 @@
       <div class="input-field-container">
   <label class="text-blue-850-40 font-sans tp4s" for="long-break">long break</label>
   <div class="input-container">
-  <input type="number" min="0" value="15" class="time-input text-blue-900 tp3s font-sans" id="long-break">
+  <input type="number" min="0" value="15" class="time-input text-blue-900 tp3s font-sans" id="longBreak">
   <div class="arrows-group">
-  <img src="assets/icon-arrow-up.svg"><img src="assets/icon-arrow-down.svg">
+  <img src="assets/icon-arrow-up.svg" onclick="document.getElementById('longBreak').stepUp()">
+  <img src="assets/icon-arrow-down.svg" onclick="document.getElementById('longBreak').stepDown()">
   </div>
 </div>
       </div>
@@ -107,9 +110,33 @@
   <div class="color-picker-container">
   <p class="text-blue-900 uppercase font-sans tp3s">Color</p>
   <div class="color-picker">
-    <div class="color-pick active" id="red-pick"></div>
-    <div class="color-pick" id="cyan-pick"></div>
-    <div class="color-pick" id="purple-pick"></div>
+<!--     <label class="color-pick active" id="red-pick">
+      <input type="radio" name="color" value="red">
+    </label>
+    <label class="color-pick" id="cyan-pick">
+<input type="radio" name="color" value="cyan">
+    </label>
+    <div class="color-pick" id="purple-pick">
+      <input type="radio" name="color" value="purple">
+    </div> -->
+
+
+<!--     <div class="red-radio-container" class="color-pick" id="red-pick" >
+    
+    </div> -->
+    
+    <label class="container">
+  <input type="radio" checked="checked" name="color" value="red">
+  <span class="checkmark" id="red-pick"></span>
+</label>
+<label class="container">
+  <input type="radio" name="color" value="cyan">
+  <span class="checkmark" id="cyan-pick"></span>
+</label>
+<label class="container">
+  <input type="radio" name="color" value="purple">
+  <span class="checkmark" id="purple-pick"></span>
+</label>
 
 
   </div>

@@ -2,6 +2,7 @@ const settingsBtn = document.getElementById("settings-btn")
 const settingsModal = document.getElementById("settings-modal")
 const timer = document.getElementById("timer")
 const pomodoroSetting = document.getElementById("pomodoro")
+const form = document.getElementById("settings-form")
 
 
 //DEFAULT values
@@ -21,3 +22,9 @@ function closeModal (){
 //Loading values
 timer.innerText = pomodoro + ":00"
 pomodoroSetting.value = pomodoro
+
+//disabling default behaviour of form button
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    console.log(e.target.color.value)
+})
