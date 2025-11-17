@@ -257,6 +257,7 @@ box-shadow: -50px -50px 100px 0px rgba(39,44,90,1),50px 50px 100px 0px rgba(18,2
     text-align: center;
     align-items: center;
     align-content: center;
+    z-index: 1;
     
 }
 
@@ -268,6 +269,7 @@ box-shadow: -50px -50px 100px 0px rgba(39,44,90,1),50px 50px 100px 0px rgba(18,2
     left: 0;
     background-color: hsl(var(--red-400));
     border-radius: 1rem;
+     z-index: 1;
 }
 
 svg{
@@ -277,6 +279,7 @@ svg{
     height: 100%;
     width: 100%;
     transform: rotate(-90deg);
+    z-index: 1;
 }
 
 #progress-bar{
@@ -288,6 +291,12 @@ svg{
     transition: stroke-dasharray 0.5s ease-out;
 }
 
+.action{
+    border: 1px solid wheat;
+    z-index: 20;
+    
+}
+
 /* MODAL - START */
 
 .modal-container{
@@ -296,7 +305,7 @@ svg{
 }
 
 .settings-modal{
-    display: block;
+    display: none;
     position: fixed;
     background-color: white;
     border-radius: var(--spacing-16);
@@ -421,8 +430,20 @@ input[type=number]::-webkit-outer-spin-button {
     background: hsl(var(--blue-900));
 }
 
+ .font-pick{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+      text-align: center;
+    align-content: center;
+    align-items: center;
+ }
 
-.color-pick, .font-pick{
+
+.color-pick{
     height: var(--spacing-40);
     width: var(--spacing-40);
     border-radius: 50%;
@@ -450,7 +471,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-position: 50%;
 }
 
-.color-pick:hover, .font-pick:hover{
+.color-pick:hover/* , .font-pick:hover */{
     cursor: pointer;
 }
 
@@ -483,7 +504,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* MODAL - END */
 
 /* The container */
-.container {
+.container,.font-pick-container {
   display: block;
   position: relative;
       height: var(--spacing-40);
@@ -536,7 +557,14 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: 70%;
 }
 
+.font-pick-container input{
+      position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
 
-
-
+.font-pick-container input:checked ~ .font-pick{
+    color: white;
+    background: hsl(var(--blue-900));
+}
 
