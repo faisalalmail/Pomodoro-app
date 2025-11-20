@@ -257,7 +257,6 @@ box-shadow: -50px -50px 100px 0px rgba(39,44,90,1),50px 50px 100px 0px rgba(18,2
     text-align: center;
     align-items: center;
     align-content: center;
-    z-index: 1;
     
 }
 
@@ -269,7 +268,6 @@ box-shadow: -50px -50px 100px 0px rgba(39,44,90,1),50px 50px 100px 0px rgba(18,2
     left: 0;
     background-color: hsl(var(--red-400));
     border-radius: 1rem;
-     z-index: 1;
 }
 
 svg{
@@ -292,7 +290,7 @@ svg{
 }
 
 .action{
-    border: 1px solid wheat;
+    position: relative;
     z-index: 20;
     
 }
