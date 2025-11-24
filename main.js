@@ -4,15 +4,26 @@ const timer = document.getElementById("timer")
 const pomodoroSetting = document.getElementById("pomodoro")
 const form = document.getElementById("settings-form")
 const modeBtns = document.getElementsByClassName("tab")
+const actionBtns = document.getElementsByClassName("action")
 const startBtn = document.getElementById("start-btn")
 
 startBtn.addEventListener("click", startTimer)
+
+//modes as an array
+let modes = [
+    {mode:"pomodoro", time: [3,3]},
+    {mode:"shortBreak", time: [4,4]},
+    {mode:"longBreak", time: [5,5]}
+]
 
 
 //event listeners for tabs buttons
 Array.from(modeBtns).forEach(button => {
   button.addEventListener('click', handleButtonClick);
 });
+
+//event listeners for action buttons
+Array.from(actionBtns).forEach(button => {button.addEventListener("click", handleAction)})
 
 function handleButtonClick(event){
     console.log(event.target.id)
@@ -39,7 +50,7 @@ function handleButtonClick(event){
 
 //DEFAULT values
 let currentTimer = []
-let pomodoro = [0,3]
+let pomodoro = [3,3]
 let shortBreak = 5
 let longBreak = 15
 let color = 'red'
@@ -148,4 +159,21 @@ function displayTime(timearray){
     }
 
     timer.innerText =  timearray[0] +":"+ seconds
+}
+
+//counter states management
+function handleAction(event){
+    //hide the clicked button
+    document.getElementById(event.target.id).style.display = "none"
+if(event.target.id == "start-btn"){
+    document.getElementById("pause-btn").style.display = "block"
+    document.getElementById("restart-btn").style.display = "none"
+    
+}
+if(event.target.id == "pause-btn"){
+    clearInterval(interval)
+    document.getElementById("start-btn").style.display = "block"
+    document.getElementById("restart-btn").style.display = "block"
+    
+}
 }
