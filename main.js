@@ -38,7 +38,8 @@ function handleButtonClick(event){
 
 
 //DEFAULT values
-let pomodoro = 23
+let currentTimer = []
+let pomodoro = [0,3]
 let shortBreak = 5
 let longBreak = 15
 let color = 'red'
@@ -46,10 +47,13 @@ let font = "font-sans"
 
 let seconds
 let currentMode = "pomodoro"
+let interval;
 
 
 // Load defualt on opening
-timer.innerText = pomodoro + ":00"
+currentTimer = pomodoro
+displayTime(pomodoro)
+//timer.innerText = displayTime(pomodoro)
 
 
 
@@ -72,7 +76,8 @@ function closeModal (){
 
 //Pomodoro mode
 function pomodoroMode(){
-    timer.innerText = pomodoro + ":00"
+    currentTimer = pomodoro
+    displayTime(currentTimer)
 }
 
 //Short break mode
@@ -109,4 +114,38 @@ function updateSettings(e){
 //start timer
 function startTimer(){
     console.log("time counting")
+    if(currentTimer[1] > 0 || currentTimer[0] > 0){
+        reduceASecond()
+interval = setInterval(reduceASecond,1000)
+    }
+    
+}
+
+function reduceASecond(){
+    console.log("counting")
+    if (currentTimer[1] > 0){
+        currentTimer[1]--
+    }else if(currentTimer[1] == 0 && currentTimer[0] >= 1){
+        currentTimer[0]--
+        currentTimer[1] = 59
+
+    }else if (currentTimer[1] == 0 && currentTimer[0] == 0){
+        clearInterval(interval)
+    }
+
+    displayTime(currentTimer)
+}
+
+
+//Function to return the correct time format to display as a string
+
+function displayTime(timearray){
+    let seconds = ""
+    if(timearray[1] < 10){
+        seconds = "0" + timearray[1]
+    } else {
+        seconds = timearray[1]
+    }
+
+    timer.innerText =  timearray[0] +":"+ seconds
 }
