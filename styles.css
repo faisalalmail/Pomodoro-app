@@ -567,3 +567,16 @@ input[type=number]::-webkit-outer-spin-button {
     background: hsl(var(--blue-900));
 }
 
+label:active{
+    background: hsla(var(--black),0.5)
+}
+
+label:checked{
+    background: purple;
+    background-color: purple;
+}
+
+input:active,input:focus{
+    background: green;
+    background-color: red;
+}

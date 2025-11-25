@@ -38,7 +38,7 @@ let font = "font-sans"
 //LATER PART - 2. check if settings are stored
 
 
-// LATER part 3. load settings
+//3. load settings
 pomodoroSetting.value = pomodoroApp.modes[0].setTime[0]
 shortBreakSetting.value = pomodoroApp.modes[1].setTime[0]
 longBreakSetting.value = pomodoroApp.modes[2].setTime[0]
