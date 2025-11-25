@@ -15,9 +15,9 @@
     </div>
     <div class="tabs">
 
-  <div class="text-blue-100 font-sans tp3f1 tab active" id="pomodoro-btn">pomodoro</div>
-  <div class="text-blue-100 font-sans tp3f1 tab" id="short-break-btn">short break</div>
-  <div class="text-blue-100 font-sans tp3f1 tab" id="long-break-btn">long break</div>
+  <div class="tab active" id="pomodoro-btn">pomodoro</div>
+  <div class="tab" id="short-break-btn">short break</div>
+  <div class="tab" id="long-break-btn">long break</div>
 </div>
 
 <div class="timer-wrapper" id="timer-wrapper">
@@ -26,10 +26,10 @@
     <div class="progress-bar">
 
   </div> -->
-  <p class="time tp1f1 font-sans text-blue-100" id="timer"></p>
-<p class="tp2f1 font-sans uppercase text-blue-100 display-none action" id="restart-btn">restart</p>
-  <p class="tp2f1 font-sans uppercase text-blue-100 action display-none" id="start-btn">start</p>
-    <p class="tp2f1 font-sans uppercase text-blue-100 display-none action" id="pause-btn">pause</p>
+  <p class="time text-blue-100" id="timer"></p>
+<p class="uppercase text-blue-100 display-none action" id="restart-btn">restart</p>
+  <p class="uppercase text-blue-100 action display-none" id="start-btn">start</p>
+    <p class="uppercase text-blue-100 display-none action" id="pause-btn">pause</p>
   
   <svg>
     <circle id="progress-bar" cx="50%" cy="50%" r="48%" pathLength="100"></circle>
@@ -104,15 +104,15 @@
     <div class="font-pick font-mono tp2sf3 text-blue-850-73">Aa</div> -->
 
     <label class="font-pick-container">
-      <input type="radio" checked="checked" name="font" value="font-sans">
+      <input type="radio" checked="checked" name="font" value="0">
       <span class="font-pick font-serif tp2sf1" id="1">Aa</span>
     </label>
     <label class="font-pick-container">
-      <input type="radio" name="font" value="font-serif">
+      <input type="radio" name="font" value="1">
       <span class="font-pick font-serif tp2sf2" id="2">Aa</span>
     </label>
     <label class="font-pick-container">
-      <input type="radio" name="font" value="font-mono">
+      <input type="radio" name="font" value="2">
       <span class="font-pick font-mono tp2sf3" id="3">Aa</span>
     </label>
 
@@ -138,15 +138,15 @@
     </div> -->
     
     <label class="container">
-  <input type="radio" checked="checked" name="color" value="red">
+  <input type="radio" checked="checked" name="color" value="0">
   <span class="checkmark" id="red-pick"></span>
 </label>
 <label class="container">
-  <input type="radio" name="color" value="cyan">
+  <input type="radio" name="color" value="1">
   <span class="checkmark" id="cyan-pick"></span>
 </label>
 <label class="container">
-  <input type="radio" name="color" value="purple">
+  <input type="radio" name="color" value="2">
   <span class="checkmark" id="purple-pick"></span>
 </label>
 

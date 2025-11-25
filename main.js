@@ -9,23 +9,27 @@ const modeBtns = document.getElementsByClassName("tab")
 const actionBtns = document.getElementsByClassName("action")
 const startBtn = document.getElementById("start-btn")
 let pomodoroApp = {
-    activeMode: 0,
+    activeMode: 2,
     modes: [
         {mode:"pomodoro", setTime: [25,0], remTime:[25,0]},
         {mode:"shortBreak", setTime: [5,0], remTime:[5,0]},
-        {mode:"longBreak", setTime: [15,0], remTime:[15,0]}
+        {mode:"longBreak", setTime: [15,0], remTime:[14,31]}
     ],
-    font:0,
-    color:0
+    activeColor:1,
+    colors: [
+        {color: "red", code:"hsl(var(--red-400))"},
+        {color: "cyan", code:"hsl(var(--cyan-300))"},
+        {color: "purple", code:"hsl(var(--purple-400))"}
+    ],
+    activeFont:0,
+    fonts:[
+        {font:"font-sans",classes:{timer:"tp1f1",action:"tp2f1",tab:"tp3f1"}},
+        {font:"font-serif",classes:{timer:"tp1f2",action:"tp2f2",tab:"tp3f2"}},
+        {font: "font-mono",classes:{timer:"tp1f3",action:"tp2f3",tab:"tp3f3"}}
+
+    ]
 }
 let interval
-
-
-//DEFAULT values
-let color = 'red'
-let font = "font-sans"
-
-
 
 
 
@@ -33,7 +37,8 @@ let font = "font-sans"
 //How about we pseudo code first
 //1. First we check if modes are already stored with previous values
     if(JSON.parse(localStorage.getItem("pomodoroAppModes")) != null){
-    modes = JSON.parse(localStorage.getItem("pomodoroAppModes"))
+    pomodoroApp = JSON.parse(localStorage.getItem("pomodoroAppModes"))
+    console.log(pomodoroApp.modes[0])
 }
 //LATER PART - 2. check if settings are stored
 
@@ -42,11 +47,16 @@ let font = "font-sans"
 pomodoroSetting.value = pomodoroApp.modes[0].setTime[0]
 shortBreakSetting.value = pomodoroApp.modes[1].setTime[0]
 longBreakSetting.value = pomodoroApp.modes[2].setTime[0]
+form.font.value = pomodoroApp.activeFont
+form.color.value = pomodoroApp.activeColor
+
 
 
 
 // 4. Load active mode (default 0)
 switchMode(pomodoroApp.modes[pomodoroApp.activeMode].slice)
+document.getElementById("progress-bar").style.stroke = pomodoroApp.colors[pomodoroApp.activeColor].code
+updateFonts()
     //apply mode values to DOM in the function
 
 
@@ -64,13 +74,6 @@ Array.from(modeBtns).forEach(button => {
 });
 
 function handleButtonClick(event){
-    //switch active tab
-    for (let btn of modeBtns){
-        btn.classList.remove("active")
-    }
-
-    document.getElementById(event.target.id).classList.add("active")
-
 
         if(event.target.id == "short-break-btn"){
         //shortBreakMode()
@@ -81,7 +84,6 @@ function handleButtonClick(event){
         //pomodoroMode()
         switchMode(0)
     }
-
 }
 
 
@@ -91,18 +93,20 @@ function handleButtonClick(event){
 
 //event listeners for action buttons
 Array.from(actionBtns).forEach(button => {button.addEventListener("click", handleAction)})
+Array.from(actionBtns).forEach(button => {button.addEventListener("mouseover", actionhovercolor)})
 
+function actionhovercolor(event){
+    console.log(event.target.id)
+    document.getElementById(event.target.id).style.color = pomodoroApp.colors[pomodoroApp.activeColor].code
 
-
-
-
+}
 
 //start timer
 function startTimer(){
     console.log("time counting")
     if(pomodoroApp.modes[pomodoroApp.activeMode].remTime[1] > 0 || pomodoroApp.modes[pomodoroApp.activeMode].remTime[0] > 0){
         reduceASecond()
-interval = setInterval(reduceASecond,100)
+interval = setInterval(reduceASecond,1000)
     }
     
 }
@@ -116,6 +120,7 @@ function reduceASecond(){
 
     }else if (pomodoroApp.modes[pomodoroApp.activeMode].remTime[1] == 0 && pomodoroApp.modes[pomodoroApp.activeMode].remTime[0] == 0){
         clearInterval(interval)
+        save()
         updateState()
     }
 
@@ -172,6 +177,7 @@ if(event.target.id == "restart-btn"){
 
     displayTime(pomodoroApp.modes[pomodoroApp.activeMode].remTime)
     document.getElementById("start-btn").style.display = "block"
+    save()
 }
 }
 // END of counter states management
@@ -179,6 +185,7 @@ if(event.target.id == "restart-btn"){
 //In case of a pause or a restart event
 function pausetimer(){
     clearInterval(interval)
+    save()
 }
 
 
@@ -187,7 +194,7 @@ function pausetimer(){
 //A function that switched mode
 function switchMode(mID){
     if(interval){
-        clearInterval(interval)
+        pausetimer()
     }
     // will use default of no mID is passed
     if (mID !== undefined && mID !== null){pomodoroApp.activeMode =  mID}
@@ -199,6 +206,8 @@ function switchMode(mID){
     }
     
     updateState()
+    updatetabs(pomodoroApp.activeMode)
+    save()
 
 }
 
@@ -262,33 +271,86 @@ function updateSettings(e){
         pomodoroApp.modes[0].setTime[0] = e.target.pomodoro.value
         pomodoroApp.modes[0].remTime[0] = e.target.pomodoro.value
         pomodoroApp.modes[0].remTime[1] = 0
+        save()
     } 
 
     if(e.target.shortBreak.value != pomodoroApp.modes[1].setTime[0]){
         pomodoroApp.modes[1].setTime[0] = e.target.shortBreak.value
         pomodoroApp.modes[1].remTime[0] = e.target.shortBreak.value
         pomodoroApp.modes[1].remTime[1] = 0
+        save()
     }
     if(e.target.longBreak.value != pomodoroApp.modes[2].setTime[0]){
         pomodoroApp.modes[2].setTime[0] = e.target.longBreak.value
         pomodoroApp.modes[2].remTime[0] = e.target.longBreak.value
         pomodoroApp.modes[2].remTime[1] = 0
+        save()
     }  
+
+    if(e.target.color.value != pomodoroApp.activeColor){
+        pomodoroApp.activeColor = e.target.color.value
+        switchMode()
+        document.getElementById("progress-bar").style.stroke = pomodoroApp.colors[pomodoroApp.activeColor].code
+    }
+
+
+
+
+
     displayTime(pomodoroApp.modes[pomodoroApp.activeMode].remTime)
     updateState()
 
-
+         
+        if(e.target.font.value != pomodoroApp.activeFont){
+        pomodoroApp.activeFont = e.target.font.value
+        save()
+        window.location.reload()
+    }
     
 
-    document.getElementById("progress-bar").style.stroke = "hsl(var(--cyan-300))"
+}
+
+function updatetabs(target){
+
+        //switch active tab
+    for (let btn of modeBtns){
+        btn.classList.remove("active")
+        btn.style.backgroundColor = 'inherit'
+
+    }
+
+    if(target == 0){
+        document.getElementById("pomodoro-btn").classList.add("active")
+        document.getElementById("pomodoro-btn").style.backgroundColor = pomodoroApp.colors[pomodoroApp.activeColor].code
+
+    } else if(target == 1){
+        document.getElementById("short-break-btn").classList.add("active")
+        document.getElementById("short-break-btn").style.backgroundColor = pomodoroApp.colors[pomodoroApp.activeColor].code
+    } else if(target ==2){
+        document.getElementById("long-break-btn").classList.add("active")
+        document.getElementById("long-break-btn").style.backgroundColor = pomodoroApp.colors[pomodoroApp.activeColor].code
+
+    }
 
 
+}
 
 
+// function to set the font for elements of changable font based on user preference
+function updateFonts(){
+    console.log(pomodoroApp.fonts[pomodoroApp.activeFont].classes)
+    timer.classList.add(pomodoroApp.fonts[pomodoroApp.activeFont].classes.timer)
 
-    console.log(e.target.color.value)
-    console.log(e.target.font.value)
-    console.log(e.target.pomodoro.value)
-    console.log(e.target.shortBreak.value)
-    console.log(e.target.longBreak.value)
+
+    for (let btn of modeBtns){
+        btn.classList.add(pomodoroApp.fonts[pomodoroApp.activeFont].classes.tab)
+    }
+
+    for (let btn of actionBtns){
+        btn.classList.add(pomodoroApp.fonts[pomodoroApp.activeFont].classes.action)
+    }
+}
+
+function save(){
+    localStorage.setItem("pomodoroAppModes",JSON.stringify(pomodoroApp))
 }
