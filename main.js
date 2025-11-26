@@ -94,6 +94,12 @@ function handleButtonClick(event){
 //event listeners for action buttons
 Array.from(actionBtns).forEach(button => {button.addEventListener("click", handleAction)})
 Array.from(actionBtns).forEach(button => {button.addEventListener("mouseover", actionhovercolor)})
+Array.from(actionBtns).forEach(button => {button.addEventListener("mouseout", mouseoutcolor)})
+
+function mouseoutcolor(event){
+    document.getElementById(event.target.id).style.color = "hsl(var(--blue-100))"
+
+}
 
 function actionhovercolor(event){
     console.log(event.target.id)
