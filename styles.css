@@ -316,10 +316,7 @@ box-shadow: -50px -50px 100px 0px rgba(39,44,90,1),50px 50px 100px 0px rgba(18,2
     opacity: 0.25;
 }
 
-.arrow:hover{
-    opacity: 0.8;
-    cursor: pointer;
-}
+
 
 #progress-bar{
     stroke: hsl(var(--red-400));
@@ -659,6 +656,12 @@ input[type="radio"] {
 }
 
 
+.arrow:active{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
 @media (min-width:768px){
 
 
@@ -764,6 +767,9 @@ form{
 }
 
 
-
+.arrow:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
 
 }

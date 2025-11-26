@@ -13,7 +13,7 @@ let pomodoroApp = {
     modes: [
         {mode:"pomodoro", setTime: [25,0], remTime:[25,0]},
         {mode:"shortBreak", setTime: [5,0], remTime:[5,0]},
-        {mode:"longBreak", setTime: [15,0], remTime:[14,31]}
+        {mode:"longBreak", setTime: [15,0], remTime:[15,0]}
     ],
     activeColor:1,
     colors: [
