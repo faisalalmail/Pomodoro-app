@@ -564,7 +564,7 @@ input[type=number]::-webkit-outer-spin-button {
   
 }
 
-.container:hover,.font-pick-container:hover{
+.container:active,.font-pick-container:active{
 border: 4px solid white;
 outline: 1px solid hsl(var(--blue-50));
 border-radius: 50%;
@@ -658,7 +658,6 @@ input[type="radio"] {
 
 .arrow:active{
     opacity: 0.8;
-    cursor: pointer;
 }
 
 
@@ -770,6 +769,13 @@ form{
 .arrow:hover{
     opacity: 0.8;
     cursor: pointer;
+}
+
+.container:hover,.font-pick-container:hover{
+border: 4px solid white;
+outline: 1px solid hsl(var(--blue-50));
+border-radius: 50%;
+
 }
 
 }
